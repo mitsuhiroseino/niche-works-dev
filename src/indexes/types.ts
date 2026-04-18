@@ -3,13 +3,13 @@ import type { IsMatchingPathCondition } from '../isMatchingPath';
 export type IndexesOptions = {
   /**
    * 処理対象のパス\
-   * デフォルトは`src`
+   * @default `src`
    */
   srcPath?: string;
 
   /**
    * indexのファイル名\
-   * デフォルトは`index.ts`
+   * @default `index.ts`
    */
   indexFileName?: string;
 

@@ -1,13 +1,13 @@
 export type VerOptions = {
   /**
    * ワークスペースのパッケージjsonのパス
-   * デフォルトは`./package.json`
+   * @default `./package.json`
    */
   workspacePackageJsonPath?: string;
 
   /**
    * パッケージが置かれたディレクトリのパス
-   * デフォルトは`./packages`
+   * @default `./packages`
    */
   packagesPath?: string;
 };

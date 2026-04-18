@@ -1,13 +1,13 @@
 export type InstallFromLocalOptions = {
   /**
    * package.jsonのパス
-   * デフォルトは`./package.json`
+   * @default './package.json'
    */
   packageJsonPath?: string;
 
   /**
    * node_modulesのパス
-   * デフォルトは`./node_modules`
+   * @default './node_modules'
    */
   nodeModulesPath?: string;
 

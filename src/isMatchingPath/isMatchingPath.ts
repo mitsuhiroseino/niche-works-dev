@@ -13,7 +13,11 @@ import type { IsMatchingPathCondition, IsMatchingPathOptions } from './types';
  */
 export default function isMatchingPath(
   targetPath: string,
-  conditions: IsMatchingPathCondition | IsMatchingPathCondition[],
+  conditions:
+    | IsMatchingPathCondition
+    | IsMatchingPathCondition[]
+    | null
+    | undefined,
   options: IsMatchingPathOptions = {},
 ) {
   if (!conditions) {

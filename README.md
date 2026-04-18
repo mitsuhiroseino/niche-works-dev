@@ -1,2 +1,3 @@
-# niche-works-dev
+# @niche-works/dev
+
 A niche library for developers.

@@ -74,8 +74,8 @@ function _indexes(
 ) {
   const {
     indexFileName = 'index.ts',
-    include = [],
-    exclude = [],
+    include,
+    exclude,
     includeNamedWithDefault,
     exportAll,
     exportAllAs,
