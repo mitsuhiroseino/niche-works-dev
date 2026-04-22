@@ -9,7 +9,7 @@ import type { InstallFromLocalOptions } from './types';
  * @param localNodeModulesPath ローカルのnode_modulesディレクトリのパス
  * @param options オプション
  */
-function installFromLocal(
+export default function installFromLocal(
   localNodeModulesPath: string,
   options: InstallFromLocalOptions = {},
 ) {
@@ -61,5 +61,3 @@ function installFromLocal(
     }
   }
 }
-
-export default installFromLocal;

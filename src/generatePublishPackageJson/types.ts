@@ -18,26 +18,26 @@ export type GeneratePublishPackageJsonOptions = {
    * exportsに設定する値
    * @default
    * {
-   *  '.': {
-   *    import: '.\/index.js',
-   *    reqire: '.\/index.cjs',
-   *    type: '.\/index.d.ts',
-   *  },
-   *  '.\/*': {
-   *    import: '.\/*\/index.js',
-   *    reqire: '.\/*\/index.cjs',
-   *    type: '.\/*\/index.d.ts',
-   *  },
-   * '.\/constants': {
-   *    import: '.\/constants.js',
-   *    reqire: '.\/constants.cjs',
-   *    type: '.\/constants.d.ts',
-   *  },
-   *  './*\/constants': {
-   *    import: './*\/constants.js',
-   *    reqire: './*\/constants.cjs',
-   *    type: './*\/constants.d.ts',
-   *  },
+   *   '.': {
+   *     import: './index.js',
+   *     reqire: './index.cjs',
+   *     type: './index.d.ts',
+   *   },
+   *   './*': {
+   *     import: './*\/index.js',
+   *     reqire: './*\/index.cjs',
+   *     type: './*\/index.d.ts',
+   *   },
+   *   './constants': {
+   *     import: './constants.js',
+   *     reqire: './constants.cjs',
+   *     type: './constants.d.ts',
+   *   },
+   *   './*\/constants': {
+   *     import: './*\/constants.js',
+   *     reqire: './*\/constants.cjs',
+   *     type: './*\/constants.d.ts',
+   *   },
    * }
    */
   exports?: PackageJson['exports'];

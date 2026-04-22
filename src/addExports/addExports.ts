@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import { posix as path } from 'path';
-import isMatchingPath from '../isMatchingPath';
+import isTargetPath from '../isTargetPath';
 import type { AddExportsOptions } from './types';
 
 /**
@@ -61,7 +61,7 @@ function _addExports(
   options: AddExportsOptions,
   current: string = '',
 ) {
-  const { include = [], exclude = [], dist = 'dist' } = options;
+  const { include, exclude, dist = 'dist' } = options;
 
   const stat = fs.statSync(targetPath);
   if (!stat.isDirectory()) {
@@ -81,11 +81,7 @@ function _addExports(
       exportsIndex.push(
         ..._addExports(itemPath, options, path.join(current, item)),
       );
-    } else if (
-      stat.isFile() &&
-      isMatchingPath(itemPath, include) &&
-      !isMatchingPath(itemPath, exclude)
-    ) {
+    } else if (isTargetPath(itemPath, { include, exclude })) {
       // exportの対象の場合
       exportsIndex.push({
         key: current,
