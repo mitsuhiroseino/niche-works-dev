@@ -1,6 +1,7 @@
 export { default as addExports } from './addExports';
 export { default as addJsExtensions } from './addJsExtensions';
 export { default as checkExistence } from './checkExistence';
+export { default as createExternalOptionFunction } from './createExternalOptionFunction';
 export { default as editJsonFile } from './editJsonFile';
 export { default as generatePublishPackageJson } from './generatePublishPackageJson';
 export { default as indexes } from './indexes';
