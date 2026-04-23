@@ -1,8 +1,12 @@
 import fs from 'fs-extra';
 import { posix as path } from 'path';
 import { isFunction, isString } from 'remeda';
-import type { ConditionValues } from './_types';
-import type { IsMatchingPathCondition, IsMatchingPathOptions } from './types';
+import type {
+  ConditionFnOptions,
+  ConditionValues,
+  IsMatchingPathCondition,
+  IsMatchingPathOptions,
+} from './types';
 
 /**
  * 処理対象のパスか判定する
@@ -11,14 +15,16 @@ import type { IsMatchingPathCondition, IsMatchingPathOptions } from './types';
  * @param options オプション
  * @returns 一致するか
  */
-export default function isMatchingPath(
+export default function isMatchingPath<
+  O extends ConditionFnOptions = ConditionFnOptions,
+>(
   targetPath: string,
   conditions:
-    | IsMatchingPathCondition
-    | IsMatchingPathCondition[]
+    | IsMatchingPathCondition<O>
+    | IsMatchingPathCondition<O>[]
     | null
     | undefined,
-  options: IsMatchingPathOptions = {},
+  options: IsMatchingPathOptions<O> = {},
 ) {
   if (!conditions) {
     return false;
@@ -47,11 +53,11 @@ export default function isMatchingPath(
   return false;
 }
 
-function _isMatching(
+function _isMatching<O extends ConditionFnOptions = ConditionFnOptions>(
   value: string,
   values: ConditionValues,
-  condition: IsMatchingPathCondition,
-  options: IsMatchingPathOptions,
+  condition: IsMatchingPathCondition<O>,
+  options: IsMatchingPathOptions<O>,
 ): boolean {
   if (isString(condition)) {
     // 条件が文字列
@@ -65,7 +71,7 @@ function _isMatching(
     }
   } else if (isFunction(condition)) {
     // 条件が関数
-    return condition(values, options.conditionOptions ?? {});
+    return condition(values, (options.conditionOptions ?? {}) as O);
   } else {
     // 条件が設定
     const { valueType = 'path', entryType = 'both', conditions } = condition;
