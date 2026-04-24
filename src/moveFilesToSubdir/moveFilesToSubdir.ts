@@ -25,8 +25,8 @@ export default async function moveFilesToSubdir(
       fs.moveSync(itemPath, path.join(subdirPath, item));
       if (index) {
         fs.writeFileSync(
-          path.join(subdirPath, `index.${ext}`),
-          `export { default } from ${name}`,
+          path.join(subdirPath, `index${ext}`),
+          `export { default } from './${name}';`,
           {
             encoding: 'utf8',
           },
