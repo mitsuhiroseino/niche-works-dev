@@ -41,6 +41,5 @@
     "preserveSymlinks": false,
     "ignoreDeprecations": "6.0"
   },
-  "include": ["src"],
-  "exclude": ["src/**/*.test.*"]
+  "include": ["src", "globals.d.ts"]
 }
