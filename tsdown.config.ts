@@ -1,6 +1,7 @@
 import distPackage from '@niche-works/rollup-plugin-dist-package';
 import fs from 'fs-extra';
 import path from 'path';
+import copy from 'rollup-plugin-copy';
 import { defineConfig } from 'tsdown';
 
 export default defineConfig((options) => ({
@@ -45,16 +46,13 @@ export default defineConfig((options) => ({
         },
       },
     }),
-    {
-      name: 'post-build',
-      async closeBundle() {
-        const outDir = options?.outDir ?? 'dist';
-        await Promise.all([
-          // その他のファイルのコピー
-          fs.copyFile('LICENSE', path.join(outDir, 'LICENSE')),
-          fs.copyFile('README.md', path.join(outDir, 'README.md')),
-        ]);
-      },
-    },
+    copy({
+      targets: [
+        {
+          src: ['LICENSE', 'README.md', 'README.ja.md'],
+          dest: 'dist',
+        },
+      ],
+    }),
   ],
 }));
